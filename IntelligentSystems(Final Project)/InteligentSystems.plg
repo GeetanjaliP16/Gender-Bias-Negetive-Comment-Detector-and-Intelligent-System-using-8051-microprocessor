@@ -1,0 +1,146 @@
+<html>
+<body>
+<pre>
+<h1>µVision3 Build Log</h1>
+<h2>Project:</h2>
+C:\Users\admin\Desktop\IntelligentSystems(Final Project)\InteligentSystems.uv2
+Project File Date:  04/14/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling InteligentSys.c...
+linking...
+Program Size: data=114.0 xdata=0 code=740
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+linking...
+Program Size: data=114.0 xdata=0 code=884
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+linking...
+Program Size: data=114.0 xdata=0 code=884
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(133): error C141: syntax error near 'unsigned'
+INTELIGENTSYS.C(133): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(134): error C141: syntax error near 'int'
+INTELIGENTSYS.C(136): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(138): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(144): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(133): error C141: syntax error near 'unsigned'
+INTELIGENTSYS.C(133): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(134): error C141: syntax error near 'int'
+INTELIGENTSYS.C(136): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(138): error C202: 'b': undefined identifier
+INTELIGENTSYS.C(144): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(135): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(135): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(135): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(121): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(135): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(126): error C202: 'commentType': undefined identifier
+INTELIGENTSYS.C(140): error C202: 'commentType': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(140): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=876
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(130): error C141: syntax error near 'unsigned'
+INTELIGENTSYS.C(130): error C202: 'a': undefined identifier
+INTELIGENTSYS.C(131): error C141: syntax error near 'int'
+INTELIGENTSYS.C(131): error C202: 'l': undefined identifier
+INTELIGENTSYS.C(133): error C202: 'l': undefined identifier
+INTELIGENTSYS.C(135): error C202: 'l': undefined identifier
+INTELIGENTSYS.C(136): error C202: 'l': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(142): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=876
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling InteligentSys.c...
+INTELIGENTSYS.C(141): warning C276: constant in condition expression
+linking...
+Program Size: data=114.0 xdata=0 code=878
+creating hex file from "InteligentSystems"...
+"InteligentSystems" - 0 Error(s), 1 Warning(s).
+</pre>
+</body>
+</html>

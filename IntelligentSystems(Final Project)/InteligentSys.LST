@@ -1,0 +1,201 @@
+C51 COMPILER V8.16   INTELIGENTSYS                                                         06/06/2021 15:05:01 PAGE 1   
+
+
+C51 COMPILER V8.16, COMPILATION OF MODULE INTELIGENTSYS
+OBJECT MODULE PLACED IN InteligentSys.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE InteligentSys.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //NOTE: if rs=0 command is send rs=1 data is sent
+   2          //RW=0(read/write) writes data to the led
+   3          
+   4          #include<at89x52.h>
+   5          #define display_port P2 //Data pins connected to port 2 on microcontroller
+   6          
+   7          
+   8          
+   9          //Declaring the 3 control lines for LCD interfacing. These are the main lines which control the LCD
+  10          sbit rs = P3^2;  //RS pin connected to pin 2 of port 3
+  11          sbit rw = P3^3;  // RW pin connected to pin 3 of port 3
+  12          sbit e =  P3^4;  //E pin connected to pin 4 of port 3
+  13          //sbit sensor=P1^0;//Connecting sensor to pin 0 of port 1
+  14          //sbit buzzer=P3^0;//Buzzer connected at pin0 port3
+  15          
+  16          sbit load1=P1^0;//Connecting load to P1 first since it contains only IO lines(lecture 12/03/2021)
+  17          sbit load2=P1^1;
+  18          sbit load3=P1^2;
+  19          sbit load4=P1^3;
+  20          sbit light=P0^7;
+  21          
+  22          
+  23          
+  24          void delay(unsigned int time)  // Function for creating delay in milliseconds.
+  25          {
+  26   1          unsigned i,j ;
+  27   1          for(i=0;i<time;i++)    
+  28   1          for(j=0;j<1275;j++);
+  29   1      }
+  30          void lcd_cmd(unsigned char command)  //Function to send command instruction to LCD-> The basic commands li
+             -ke switching on led 
+  31          {
+  32   1          display_port = command;
+  33   1          rs= 0;
+  34   1          rw=0;
+  35   1          e=1;
+  36   1          delay(1);
+  37   1          e=0;
+  38   1      }
+  39          
+  40          void lcd_data(unsigned char disp_data)  //Function to send display data to LCD
+  41          {
+  42   1          display_port = disp_data; //Assigning data to Port 2 indirectly
+  43   1              //prerequisities of these special lines to display data
+  44   1          rs= 1;
+  45   1          rw=0;
+  46   1          e=1;
+  47   1          delay(1);
+  48   1          e=0;
+  49   1      }
+  50          
+  51           void lcd_init()    //Function to prepare the LCD  and get it ready
+  52          {
+  53   1          lcd_cmd(0x38);  // for using 2 lines and 5X7 matrix of LCD
+  54   1          delay(10);
+C51 COMPILER V8.16   INTELIGENTSYS                                                         06/06/2021 15:05:01 PAGE 2   
+
+  55   1          lcd_cmd(0x0F);  // turn display ON, cursor blinking
+  56   1          delay(10);
+  57   1          lcd_cmd(0x01);  //clear screen
+  58   1          delay(10);
+  59   1          lcd_cmd(0x81);  // bring cursor to position 1 of line 1
+  60   1          delay(10);
+  61   1      }
+  62          void main()
+  63          {
+  64   1      
+  65   1      unsigned int commentType=1;
+  66   1      
+  67   1      unsigned char x;
+  68   1      //Starting basic declaration 
+  69   1      
+  70   1      SCON=0x50;//Used for serial data input 
+  71   1      TMOD=0x20;//timer
+  72   1      TH1=-3;//setting bod rate to 9600
+  73   1      TR1=1;//Starting time
+  74   1      
+  75   1      //TO recieve characters from PC keyboard
+  76   1      while(1)
+  77   1      {
+  78   2      while(RI==0);//If RI is 0 stay here else go ahead. HERE WE ARE WAITING TO RECIEVE CHARACTER FROM KEYBOARD
+  79   2      //If RI is 1 data is ready on SBUF
+  80   2      //Once character recieved tranfering it from microcontroller to peripheral
+  81   2      x=SBUF;//Data recieved on SBUF is transfered to variable x
+  82   2      SBUF=x;//To see which character you recieved
+  83   2      
+  84   2      
+  85   2      while(TI==0);
+  86   2      
+  87   2      TI=0;//clearing TI logic
+  88   2      RI=0;//To allow the next character to be inputed
+  89   2      //TO operate the loads
+  90   2      
+  91   2      //Based on what character is recived we are doing the operations
+  92   2      if(x=='0')
+  93   2      {
+  94   3      load1=1;//load 1 off
+  95   3      }
+  96   2      if(x=='1')
+  97   2      {
+  98   3      load1=0;//load 1 on
+  99   3      }
+ 100   2      if(x=='2')
+ 101   2      {
+ 102   3      load2=1;//load 2 off
+ 103   3      }
+ 104   2      if(x=='3')
+ 105   2      {
+ 106   3      load2=0;//load2 on
+ 107   3      }
+ 108   2      if(x=='4')
+ 109   2      {
+ 110   3      load3=1;//load3 off
+ 111   3      }
+ 112   2      if(x=='5')
+ 113   2      {
+ 114   3      load3=0;//load3 on
+ 115   3      }
+ 116   2      if(x=='6')
+C51 COMPILER V8.16   INTELIGENTSYS                                                         06/06/2021 15:05:01 PAGE 3   
+
+ 117   2      {
+ 118   3      load4=1;//load 4 off
+ 119   3      }
+ 120   2      if(x=='7')
+ 121   2      {
+ 122   3      load4=0;//load 4 on
+ 123   3      }
+ 124   2      
+ 125   2      if(x=='8')//GENDER BIAS INDICATOR
+ 126   2      {
+ 127   3      if (commentType==1)
+ 128   3      {
+ 129   4      unsigned char a[100]="Sexist Comment";    //string of 14 characters with a null terminator.
+ 130   4      int l=0;//used to iterate through the array of a which contains the strings to print
+ 131   4      lcd_init();//Initializing the LCD and starting it
+ 132   4      while(a[l] != '\0') // searching the null terminator in the sentence
+ 133   4      {
+ 134   5      lcd_data(a[l]);
+ 135   5      l++;
+ 136   5      delay(50);
+ 137   5      }
+ 138   4      light=0;
+ 139   4      }
+ 140   3      
+ 141   3      if (commentType=0)
+*** WARNING C276 IN LINE 141 OF INTELIGENTSYS.C: constant in condition expression
+ 142   3      {
+ 143   4      unsigned char c[100]="Safe Comments";    //string of 14 characters with a null terminator.
+ 144   4      int l=0;//used to iterate through the array of a which contains the strings to print
+ 145   4      lcd_init();//Initializing the LCD and starting it
+ 146   4      while(c[l] != '\0') // searching the null terminator in the sentence
+ 147   4      {
+ 148   5      lcd_data(c[l]);
+ 149   5      l++;
+ 150   5      delay(50);
+ 151   5      }
+ 152   4      }
+ 153   3      }
+ 154   2      
+ 155   2      if(x=='9')//GENDER BIAS INDICATOR
+ 156   2      {
+ 157   3      unsigned char d[100]="Comment Deleted";    //string of 14 characters with a null terminator.
+ 158   3      int l=0;//used to iterate through the array of a which contains the strings to print
+ 159   3      lcd_init();//Initializing the LCD and starting it
+ 160   3      while(d[l] != '\0') // searching the null terminator in the sentence
+ 161   3      {
+ 162   4      lcd_data(d[l]);
+ 163   4      l++;
+ 164   4      delay(50);
+ 165   4      }
+ 166   3      }
+ 167   2      
+ 168   2      }
+ 169   1      //buzzer=1;
+ 170   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    317    ----
+   CONSTANT SIZE    =    300    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V8.16   INTELIGENTSYS                                                         06/06/2021 15:05:01 PAGE 4   
+
+   DATA SIZE        =   ----     105
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

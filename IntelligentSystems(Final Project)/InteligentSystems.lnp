@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"InteligentSys.obj" 
+TO "InteligentSystems" 
+CODE( 0X0000-0X0FFF )

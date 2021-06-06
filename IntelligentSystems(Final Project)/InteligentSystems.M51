@@ -1,0 +1,319 @@
+BL51 BANKED LINKER/LOCATER V6.15                                                        06/06/2021  15:05:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.15, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, InteligentSys.obj TO InteligentSystems CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  InteligentSys.obj (INTELIGENTSYS)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  InteligentSystems (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0069H     UNIT         _DATA_GROUP_
+            IDATA   0071H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     012CH     UNIT         ?CO?INTELIGENTSYS
+            CODE    092CH     00F6H     UNIT         ?C?LIB_CODE
+            CODE    0A22H     00C5H     UNIT         ?PR?MAIN?INTELIGENTSYS
+            CODE    0AE7H     002DH     UNIT         ?PR?LCD_INIT?INTELIGENTSYS
+            CODE    0B14H     0027H     UNIT         ?PR?_DELAY?INTELIGENTSYS
+            CODE    0B3BH     0012H     UNIT         ?PR?_LCD_CMD?INTELIGENTSYS
+            CODE    0B4DH     0012H     UNIT         ?PR?_LCD_DATA?INTELIGENTSYS
+            CODE    0B5FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   InteligentSystems (?C_STARTUP)
+
+
+SEGMENT                               DATA_GROUP 
+  +--> CALLED SEGMENT               START    LENGTH
+---------------------------------------------------
+?C_C51STARTUP                       -----    -----
+  +--> ?PR?MAIN?INTELIGENTSYS
+
+?PR?MAIN?INTELIGENTSYS              0008H    0069H
+  +--> ?CO?INTELIGENTSYS
+  +--> ?PR?LCD_INIT?INTELIGENTSYS
+  +--> ?PR?_LCD_DATA?INTELIGENTSYS
+  +--> ?PR?_DELAY?INTELIGENTSYS
+
+?PR?LCD_INIT?INTELIGENTSYS          -----    -----
+  +--> ?PR?_DELAY?INTELIGENTSYS
+  +--> ?PR?_LCD_CMD?INTELIGENTSYS
+
+?PR?_DELAY?INTELIGENTSYS            -----    -----
+BL51 BANKED LINKER/LOCATER V6.15                                                      06/06/2021  15:05:02  PAGE 2
+
+
+  +--> ?PR?_LCD_CMD?INTELIGENTSYS
+
+?PR?_LCD_DATA?INTELIGENTSYS         -----    -----
+  +--> ?PR?_DELAY?INTELIGENTSYS
+
+
+
+SYMBOL TABLE OF MODULE:  InteligentSystems (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0B5FH         SEGMENT       ?C_C51STARTUP
+  I:0071H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0B62H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0B5FH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0B5FH         LINE#         133
+  C:0B61H         LINE#         134
+  C:0B62H         LINE#         135
+  C:0B63H         LINE#         136
+  C:0B65H         LINE#         185
+  C:0B68H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        INTELIGENTSYS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0B1BH         PUBLIC        _delay
+  B:0080H.7       PUBLIC        light
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0A22H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.15                                                      06/06/2021  15:05:02  PAGE 3
+
+
+  C:0B4DH         PUBLIC        _lcd_data
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  C:0800H         SYMBOL        _?ix1000
+  C:0864H         SYMBOL        _?ix1001
+  C:08C8H         SYMBOL        _?ix1002
+  C:0B3BH         PUBLIC        _lcd_cmd
+  C:0AF9H         PUBLIC        lcd_init
+  D:008DH         PUBLIC        TH1
+  B:0090H.0       PUBLIC        load1
+  B:0090H.1       PUBLIC        load2
+  B:0090H.2       PUBLIC        load3
+  B:0090H.3       PUBLIC        load4
+  B:0088H.6       PUBLIC        TR1
+  B:00B0H.4       PUBLIC        e
+  B:00B0H.2       PUBLIC        rs
+  B:00B0H.3       PUBLIC        rw
+  C:0B14H         SYMBOL        L?0043
+  -------         PROC          L?0042
+  -------         ENDPROC       L?0042
+  C:0B14H         SYMBOL        L?0043
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0B1BH         LINE#         24
+  C:0B1BH         LINE#         25
+  C:0B1BH         LINE#         27
+  C:0B25H         LINE#         28
+  C:0B3AH         LINE#         29
+  -------         ENDPROC       _DELAY
+  -------         PROC          _LCD_CMD
+  D:0007H         SYMBOL        command
+  C:0B3BH         LINE#         30
+  C:0B3BH         LINE#         31
+  C:0B3BH         LINE#         32
+  C:0B3DH         LINE#         33
+  C:0B3FH         LINE#         34
+  C:0B41H         LINE#         35
+  C:0B43H         LINE#         36
+  C:0B4AH         LINE#         37
+  C:0B4CH         LINE#         38
+  -------         ENDPROC       _LCD_CMD
+  -------         PROC          _LCD_DATA
+  D:0007H         SYMBOL        disp_data
+  C:0B4DH         LINE#         40
+  C:0B4DH         LINE#         41
+  C:0B4DH         LINE#         42
+  C:0B4FH         LINE#         44
+  C:0B51H         LINE#         45
+  C:0B53H         LINE#         46
+  C:0B55H         LINE#         47
+  C:0B5CH         LINE#         48
+  C:0B5EH         LINE#         49
+BL51 BANKED LINKER/LOCATER V6.15                                                      06/06/2021  15:05:02  PAGE 4
+
+
+  -------         ENDPROC       _LCD_DATA
+  -------         PROC          L?0041
+  -------         ENDPROC       L?0041
+  -------         PROC          LCD_INIT
+  C:0AF9H         LINE#         51
+  C:0AF9H         LINE#         52
+  C:0AF9H         LINE#         53
+  C:0AFBH         LINE#         54
+  C:0AFEH         LINE#         55
+  C:0B00H         LINE#         56
+  C:0B03H         LINE#         57
+  C:0B05H         LINE#         58
+  C:0B08H         LINE#         59
+  C:0B0DH         LINE#         60
+  -------         ENDPROC       LCD_INIT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        commentType
+  D:000AH         SYMBOL        x
+  -------         DO            
+  D:000BH         SYMBOL        a
+  D:006FH         SYMBOL        l
+  D:000BH         SYMBOL        c
+  D:006FH         SYMBOL        l
+  -------         ENDDO         
+  -------         DO            
+  D:000BH         SYMBOL        c
+  D:006FH         SYMBOL        l
+  -------         ENDDO         
+  -------         DO            
+  D:000BH         SYMBOL        d
+  D:006FH         SYMBOL        l
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0A22H         LINE#         62
+  C:0A22H         LINE#         63
+  C:0A22H         LINE#         65
+  C:0A28H         LINE#         70
+  C:0A2BH         LINE#         71
+  C:0A2EH         LINE#         72
+  C:0A31H         LINE#         73
+  C:0A33H         LINE#         76
+  C:0A33H         LINE#         77
+  C:0A33H         LINE#         78
+  C:0A36H         LINE#         81
+  C:0A39H         LINE#         82
+  C:0A3CH         LINE#         85
+  C:0A3FH         LINE#         87
+  C:0A41H         LINE#         88
+  C:0A43H         LINE#         92
+  C:0A48H         LINE#         93
+  C:0A48H         LINE#         94
+  C:0A4AH         LINE#         95
+  C:0A4AH         LINE#         96
+  C:0A4FH         LINE#         97
+  C:0A4FH         LINE#         98
+  C:0A51H         LINE#         99
+BL51 BANKED LINKER/LOCATER V6.15                                                      06/06/2021  15:05:02  PAGE 5
+
+
+  C:0A51H         LINE#         100
+  C:0A56H         LINE#         101
+  C:0A56H         LINE#         102
+  C:0A58H         LINE#         103
+  C:0A58H         LINE#         104
+  C:0A5DH         LINE#         105
+  C:0A5DH         LINE#         106
+  C:0A5FH         LINE#         107
+  C:0A5FH         LINE#         108
+  C:0A64H         LINE#         109
+  C:0A64H         LINE#         110
+  C:0A66H         LINE#         111
+  C:0A66H         LINE#         112
+  C:0A6BH         LINE#         113
+  C:0A6BH         LINE#         114
+  C:0A6DH         LINE#         115
+  C:0A6DH         LINE#         116
+  C:0A72H         LINE#         117
+  C:0A72H         LINE#         118
+  C:0A74H         LINE#         119
+  C:0A74H         LINE#         120
+  C:0A79H         LINE#         121
+  C:0A79H         LINE#         122
+  C:0A7BH         LINE#         123
+  C:0A7BH         LINE#         125
+  C:0A81H         LINE#         126
+  C:0A81H         LINE#         127
+  C:0A89H         LINE#         128
+  C:0A89H         LINE#         129
+  C:0A8DH         LINE#         130
+  C:0A8DH         LINE#         131
+  C:0A90H         LINE#         132
+  C:0A99H         LINE#         133
+  C:0A99H         LINE#         134
+  C:0A9CH         LINE#         135
+  C:0AA4H         LINE#         136
+  C:0AABH         LINE#         137
+  C:0AADH         LINE#         138
+  C:0AAFH         LINE#         139
+  C:0AAFH         LINE#         141
+  C:0AB7H         LINE#         142
+  C:0AB7H         LINE#         143
+  C:0AB7H         LINE#         144
+  C:0AB7H         LINE#         145
+  C:0AB7H         LINE#         147
+  C:0AB7H         LINE#         148
+  C:0AB7H         LINE#         152
+  C:0AB7H         LINE#         153
+  C:0AB7H         LINE#         155
+  C:0AC0H         LINE#         156
+  C:0AC0H         LINE#         157
+  C:0AC4H         LINE#         158
+  C:0AC4H         LINE#         159
+  C:0AC7H         LINE#         160
+  C:0AD3H         LINE#         161
+  C:0AD3H         LINE#         162
+  C:0AD6H         LINE#         163
+BL51 BANKED LINKER/LOCATER V6.15                                                      06/06/2021  15:05:02  PAGE 6
+
+
+  C:0ADEH         LINE#         164
+  C:0AE5H         LINE#         165
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        INTELIGENTSYS
+
+  -------         MODULE        ?C?COPY
+  C:09FCH         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0278H BYTE (30%) *
+******************************************************************************
+
+Program Size: data=114.0 xdata=0 code=878
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
